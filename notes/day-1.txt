@@ -61,3 +61,51 @@ bootstrapApplication => Bootstraps an instance of an Angular application (of typ
 
 ApplicationRef => A reference to an Angular application running on a page.
 
+JavaScript:
+loosely typed language (no strict typing)
+does not have a static type checking and static compilation
+
+browsers:
+chrome -> V8
+safari -> JSCore (indigo)
+firefox -> Spidermonkey
+edge, opera -> chromekit
+
+Ryan Dahl -> Node JS [2009]
+	- a server-side framework, 
+	- JS runtime
+	- V8 engine (tweaked version)
+
+	- deno
+
+JS data types:
+----------------------
+number, string, bool, object
+undefined, NaN, null, Infinity 
+
+JS new features:
+---------------
+ES -> ECMA Script
+>2015 -> ES 6+
+
+1. let and const keywords
+2. arrow function
+3. class, constructor, extends, super
+4. templated string
+
+
+TypeScript:
+strictly typed language
+does have a static type checking
+development mode language
+
+
+create package.json file:
+>npm init --yes
+
+installing typescript compiler:
+>npm i typescript -D
+
+var p = document.createElemnt('p')
+p.innerText = "another"
+
