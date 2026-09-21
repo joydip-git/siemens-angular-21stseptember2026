@@ -1,0 +1,63 @@
+Angular 19 (22)
+
+s/w:
+Node JS
+VS Code
+
+
+JavaScipt
+TypeScript [Angular]
+Node JS (server side JS based framework)
+
+Angular
+ - client-side, front-end JS based framework  
+ - component (design/view/template + code + metadata - supplied through @Component({ selector:'', templateUrl:'', styleurl:'', imports:[]}) decorator)
+ - create Single Page App (SPA)
+
+tool: Angular CLI (@angular/cli)
+global path: C:\Users\<user-name>\AppData\Roaming\npm
+
+
+
+create an angular app:
+>ng new <app-name>
+
+packages:
+@angular/common
+@angular/core
+@angular/router
+@angular/forms
+@angular/compiler
+@angular/platform-browser
+rxjs
+tslib
+
+decorator (function) -> @decorator-name({})
+
+@Component({}) => Decorator that marks a class as an Angular component and provides configuration metadata that determines how the component should be processed, instantiated, and used at runtime.
+
+every component is accessed/used like a custom HTML tag. the selector of the component is where you decide/pass the name of that "tag"
+
+in angular app, there might be hundreds of components. out of all, at least one component should be rendered in the body of the HTML, by default. that component is known "root" component (default)
+
+in an app, created by angular cli, the name of the "root" component is - "app"
+	- app.css [style]
+	- app.html [template]
+	- app.ts [code]
+	- app.spec.ts [unit test case file]
+
+this component has selector value "app-root" (the tag name for the component)
+note: every component's tag name should start with a prefix (such as "app"), followed by the name of the component, so that the custom tag does not conflict with the built-in HTML tags
+
+for example: 
+	component class name PersonList
+	selector-value: app-person-list
+	or app-person-data
+
+this root component is rendered in index.html file's <body> element where <app-root> tag is used
+
+
+bootstrapApplication => Bootstraps an instance of an Angular application (of type ApplicationRef) and renders a standalone component as the application's root component
+
+ApplicationRef => A reference to an Angular application running on a page.
+

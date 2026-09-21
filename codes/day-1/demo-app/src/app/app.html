@@ -1,0 +1,31 @@
+<!-- <html>
+  <head></head>
+  <body>
+    <h2>
+      {{ title() }}
+    </h2>
+  </body>
+</html> -->
+<style>
+  .button-style {
+    background-color: blueviolet;
+    border-radius: 5px;
+    border-style: solid;
+    color: white;
+  }
+</style>
+
+<h2 id="title" class="common-style header-style">
+  {{ title() }}
+</h2>
+<br>
+<button type="button" (click)="clicked()" class="button-style">
+  Click Me!!!
+</button>
+<br>
+<!-- embed/nest the another component -->
+ <app-another></app-another>
+<br>
+<h2 id="footer" class="common-style footer-style">
+  &copy; Siemens, 2026
+</h2>

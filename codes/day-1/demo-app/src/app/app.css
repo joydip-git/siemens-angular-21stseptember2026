@@ -1,0 +1,40 @@
+/* element selector */
+/* h2 {
+    background-color: burlywood;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: burlywood;
+    border-width: 1px;
+    text-align: center;
+} */
+
+/* id selector */
+/* #title {
+    background-color: burlywood;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: burlywood;
+    border-width: 1px;
+    text-align: center;
+} */
+
+/* class selector */
+.common-style {
+    background-color: burlywood;
+
+    border-radius: 5px;
+    border-style: solid;
+    border-color: burlywood;
+    border-width: 1px;
+    text-align: center;
+}
+
+.header-style {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.footer-style {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
