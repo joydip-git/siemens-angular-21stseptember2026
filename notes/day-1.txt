@@ -109,3 +109,50 @@ installing typescript compiler:
 var p = document.createElemnt('p')
 p.innerText = "another"
 
+
+Angular Features:
+------------------------
+Binding:
+	how to pass data from code to template: 
+	data binding - binding data from the code of a component to the element(s) in the template of the same component
+	syntax:
+	a. {{ prop-name }} -> interpolation or mustache syntax
+	b. <element [attribute]="prop-name"> -> property/attribute binding
+	
+	how to pass data from template to code:
+	event binding -> bind an event in the template of a component, with a method from the code of the same component
+	syntax: <element (event)="method(arguments)">
+
+
+directives:
+----------------
+NgFor => *ngFor
+
+@Directive({
+	selector:'[ngFor]'
+})
+export class NgFor{
+	method(expression, template){
+		return ....
+	}
+}
+
+1. structural: manipulate DOM
+ ex: ngIf, ngFor, ngSwitch
+
+starts with *
+used like an attribute
+
+2. attribute directives: extend the behavior of the existing element
+ex: ngClass, ngStyle, formGroup, formControl etc.
+start with no special character
+used like an attribute
+
+3. component directive: a component is a directive too, but the one with template. no other directive has template.
+start with @Component({})
+used like a custom HTML tag
+
+
+
+
+

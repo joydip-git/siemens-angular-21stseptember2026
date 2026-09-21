@@ -1,0 +1,30 @@
+<h2 (mouseover)="toggle()" [ngClass]="show?'first':'second'">Binding</h2>
+
+<br>
+
+<p>
+    Name: &nbsp; {{personName}}
+</p>
+
+<br>
+
+<div>
+    <label for="txtName">Name:</label>
+    &nbsp;
+    <input type="text" id="txtName" [value]="personName" [style.width.px]="inputwidth"
+        (input)="updateName($event.target.value)">
+</div>
+<br>
+
+<!-- <ul *ngIf="people.length>0"> -->
+
+@if(people.length>0){
+<ul>
+    @for (name of people; track $index) {
+    <li>{{name}}</li>
+    }
+    <!-- <li *ngFor="let name of people">{{name}}</li> -->
+</ul>
+}@else {
+<span>No Names</span>
+}
