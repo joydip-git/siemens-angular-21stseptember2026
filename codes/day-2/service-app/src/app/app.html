@@ -1,0 +1,26 @@
+<h2>Services</h2>
+<br>
+@if(records().length>0){
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- @for (record of records(); track $index) -->
+        @for (record of (records()); track $index)
+        {
+        <tr>
+            <td>{{record.id}}</td>
+            <td>{{record.name|uppercase}}</td>
+            <td>{{record.salary|currency:'INR'}}</td>
+        </tr>
+        }
+    </tbody>
+</table>
+}@else {
+<span>no records</span>
+}

@@ -52,11 +52,74 @@ export class CurrencyPipe implements PipeTransform{
 
 ... -> Rest operator
 
-double CalculateAverage(string name,params double[] args ){}
+services and DI:
+--------------------------
+common piece of business, data acces logic etc.
 
-CalculateAverage('Tomas',30, 40, 50)
-CalculateAverage('Lalitha',25,45)
-CalculateAverage('Ritesh',30, 40, 50, 60, 70)
+register service provider:
+---------------------------------
+service provider: which provides metadata of a service to Angular's DI framework
+type: Provider
+	a. ClassProvider: provide and useClass
+	b. ValueProvider: provide and useValue
+	c. ExistingProvider: provide and useExisting
+	d. FactoryProvider: provide and useFactory
+
+create provider:
+--------------------
+1. when the token is none other than the class itself (default provider)
+
+const TOKEN  = PersonService
+
+defaukt provider (class provider)
+{
+	provide: TOKEN
+	useClass: PersonService/ useValue: new PersonService/ useFactory: ()=>{ return new PersonService()}
+}
+
+value provider:
+{
+	provide: TOKEN
+	useValue: new PersonService
+}
+
+factory pprovider:
+{
+	provide: TOKEN
+	useFactory: ()=>{ return new PersonService()}
+}
+
+
+
+2. when the token is a string (custom provider)
+
+const TOKEN  = 'TOKEN'
+
+{
+	provide: TOKEN,
+	useClass: PersonService
+}
+
+3. when the token is an object of InjectionToken type (custom provider)
+
+const TOKEN = new InjectionToken<PersonService>('TOKEN')
+
+{
+	provide: TOKEN
+	useClass: PersonService
+}
+
+register:
+---------------
+1. component
+2. root level
+
+at both there is a property "providers" which accepts an array or Provider objects
+
+consume service:
+-------------------
+a. constructor DI
+b. inject method DI
 
 
 	

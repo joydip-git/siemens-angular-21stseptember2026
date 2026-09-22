@@ -23,9 +23,21 @@ Initial task: (binding)
 5. nest the ProductList component inside the App component
 6. run
 
-enhancement:
+enhancement-1:
+-------------------------
 create another component FilterProduct in "src/app/modules/products/components" directory
 it will supply the filter text typed in a textbox of its template to ProductList component so that the products can be filtered by product name
+
+enhancement-2:
+-----------------------
+create a folder "services" in "src/app/modules/products" directory
+
+create an interface for the following service (service-contact.ts file)
+add a file "product-service.ts" in the "services" folder
+create a ProductService class in that and implement the interface
+	- getAll -> the method does not have any arguments but returns an array of Product objects (currently the hard coded array in products.ts file)
+create and register a custom provider (based on InjectionToken) in the app.config.ts file
+consume the same in ProductList component either through constructor or using inject() method (preferred)
 
 app name: pms-app
 
@@ -39,6 +51,9 @@ src (folder)
 		app.config.ts
 		app-routes.ts
 
+		config (folder)
+			constants.ts (const values and provider function)
+
 		modules (folder)
 
 			root (folder)
@@ -48,6 +63,9 @@ src (folder)
 				app.spec.ts
 
 			products (folder)
+				services
+					service-contract.ts (interface in it)
+					product-service.ts (class in it)
 
 				models (folder)
 					product.ts (file with Product type)
