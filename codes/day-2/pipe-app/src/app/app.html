@@ -1,0 +1,34 @@
+<div>
+  <label for="ddlSort">Sort By: &nbsp;</label>
+  <select id="ddlSort" (change)="updateChoice($event)">
+    <option value="0" selected disabled>--select--</option>
+    <option value="1">Id</option>
+    <option value="2">Name</option>
+    <option value="3">Salary</option>
+  </select>
+</div>
+<br>
+@if(records().length>0){
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- @for (record of records(); track $index) -->
+    @for (record of (records()|peopleSort:sortchoice()); track $index)
+    {
+    <tr>
+      <td>{{record.id}}</td>
+      <td>{{record.name|uppercase}}</td>
+      <td>{{record.salary|currency:'INR'}}</td>
+    </tr>
+    }
+  </tbody>
+</table>
+}@else {
+<span>no records</span>
+}

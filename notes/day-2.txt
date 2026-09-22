@@ -19,5 +19,44 @@ ng g|generate
 
 	etc.
 
-src\app:
+Pipe:
+-----------------
+transformer -> transforming data before the data gets "bound" in the UI
+
+@Pipe({ name:'uppercase'})
+export class UpperCasePipe implements PipeTransform{
+	transform(value:string, ...args:any[]):string{
+		return value.toLocaleUpperCase();
+	}
+}
+
+import the class in the "imports" array in a component metadata
+use in the template like the following:
+
+{{record.name|uppercase}}
+
+-> new UpperCasePipe().transform(record.name)
+
+import { Pipe, PipeTransform} from '@angular/core'
+
+@Pipe({ name:'currency'})
+export class CurrencyPipe implements PipeTransform{
+	transform(value:any, ...args:any[]):string{
+		return ...
+	}
+}
+
+{{record.salary|currency:'USD':'2'}}
+
+-> new CurrencyPipe().transform(record.salary,)
+
+... -> Rest operator
+
+double CalculateAverage(string name,params double[] args ){}
+
+CalculateAverage('Tomas',30, 40, 50)
+CalculateAverage('Lalitha',25,45)
+CalculateAverage('Ritesh',30, 40, 50, 60, 70)
+
+
 	
