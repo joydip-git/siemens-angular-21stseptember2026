@@ -1,0 +1,9 @@
+<p>
+    Data from parent:
+</p>
+<br>
+<div>
+    <label for="txtName">Name: &nbsp;</label>
+    <!-- <input type="text" [value]="personName" id="txtName" (input)="updateName($event.target.value)"> -->
+    <input type="text" [value]="personName()" id="txtName" (input)="updateName($event.target.value)">
+</div>

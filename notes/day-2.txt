@@ -1,0 +1,23 @@
+signal
+
+Zone.js -> s/w package
+
+sharing data between components
+	- when one component is parent and another is nested (means in the same component tree) inside the parent
+		- pass data from the parent to the "immediately" nested component [data binding]
+		- pass data from the "immediately" nested component to its parent (event binding)
+
+	- the components are in the different component tree (and should be nested inside a common parent)
+
+create components and other assets of angular using "ng" tool:
+--------------------------------------------------------------
+ng g|generate 
+	c|component
+	d|directive
+	p|pipe
+	s|service
+
+	etc.
+
+src\app:
+	
