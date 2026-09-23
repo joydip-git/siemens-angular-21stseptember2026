@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, signal } from '@angular/core';
+import { Component, effect, EffectCleanupRegisterFn, inject, input, OnDestroy, OnInit, signal } from '@angular/core';
 import { ProductFilterPipe } from '../../pipes/product-filter-pipe';
 import { CurrencyPipe, UpperCasePipe } from '@angular/common';
 import { Product } from '../../models/product';
@@ -13,7 +13,7 @@ import { Spinner } from '../../../shared/components/spinner/spinner';
   styleUrl: './product-list.css',
   templateUrl: './product-list.html',
 })
-export class ProductList {
+export class ProductList implements OnInit, OnDestroy {
   filterText = input('')
   products = signal<Product[]>([])
   isRequestOver = signal(false)
@@ -21,15 +21,21 @@ export class ProductList {
   private productSvcRef = inject<ServiceContract<Product>>(PRODUCT_SERVICE_TOKEN)
   private fetchSubscription?: Subscription;
 
-  constructor() {
-    effect(
-      () => {
-        this.fetchProducts()
-      }
-    )
-  }
+  //constructor() {
+  // effect(
+  //   (registerCleanUp) => {
+  //     this.fetchProducts(registerCleanUp)
+  //   }
+  // )
+  //}
 
-  private fetchProducts() {
+  ngOnInit(): void {
+    this.fetchProducts()
+  }
+  ngOnDestroy(): void {
+    this.fetchSubscription?.unsubscribe()
+  }
+  private fetchProducts(registerCleanUp?: EffectCleanupRegisterFn) {
     this.fetchSubscription = this.productSvcRef
       .getAll()
       .subscribe({
@@ -48,6 +54,13 @@ export class ProductList {
           this.errorInfo.set(err.mesaage)
           this.isRequestOver.set(true)
         }
+
       })
+
+    if (registerCleanUp) {
+      registerCleanUp(
+        () => this.fetchSubscription?.unsubscribe()
+      )
+    }
   }
 }
