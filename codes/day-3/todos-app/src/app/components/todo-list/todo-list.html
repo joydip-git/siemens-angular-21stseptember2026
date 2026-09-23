@@ -9,7 +9,22 @@
 <br>
 <ul>
     @for (todo of todos(); track $index) {
-    <li>{{todo.title}}</li>
+    <!-- <li (click)="selectedTodo.set(todo)"> -->
+    <li (click)="selectedTodoId.set(todo.id)">
+        <u>{{todo.title}}</u>
+    </li>
     }
 </ul>
+}
+
+<!-- @if(selectedTodo()!==null){
+ <app-todo-info [todo]="selectedTodo()"></app-todo-info>
+}@else{
+<span>select a todo to view details</span>
+} -->
+
+@if(selectedTodoId()>0){
+<app-todo-info [selectedId]="selectedTodoId()"></app-todo-info>
+}@else{
+<span>select a todo to view details</span>
 }

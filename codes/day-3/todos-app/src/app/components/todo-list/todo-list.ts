@@ -1,16 +1,17 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, computed, effect, EffectCleanupRegisterFn, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { ServiceManager } from '../../services/todo-service';
 import { Todo } from '../../models/todo';
 import { TODO_SERVICE_TOKEN } from '../../config/constants';
 import { Observable, Observer, Subscription } from 'rxjs';
+import { TodoInfo } from '../todo-info/todo-info';
 
 @Component({
-  imports: [],
+  imports: [TodoInfo],
   selector: 'app-todo-list',
   styleUrl: './todo-list.css',
   templateUrl: './todo-list.html',
 })
-export class TodoList {
+export class TodoList implements OnInit, OnDestroy {
   private todoSvc: ServiceManager<Todo> = inject<ServiceManager<Todo>>(TODO_SERVICE_TOKEN)
   private subscription?: Subscription;
 
@@ -21,12 +22,20 @@ export class TodoList {
   todos = signal<Todo[]>([])
   isRequestOver = signal(false)
   errorInfo = signal('')
-
+  //selectedTodo = signal<Todo | null>(null)
+  selectedTodoId = signal(0)
   constructor() {
-    effect(() => this.getTodos())
+    //effect((cleanUp: EffectCleanupRegisterFn) => this.getTodos(cleanUp))
+    console.log('TDL created');
   }
 
-  getTodos() {
+  ngOnInit(): void {
+    this.getTodos()
+  }
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe()
+  }
+  getTodos(cleanUp?: EffectCleanupRegisterFn) {
     const obs: Observable<Todo[]> = this.todoSvc
       .fetchAll();
 
@@ -45,5 +54,11 @@ export class TodoList {
       complete: () => { }
     }
     this.subscription = obs.subscribe(todoObserver)
+
+    if (cleanUp) {
+      cleanUp(
+        () => this.subscription?.unsubscribe()
+      )
+    }
   }
 }

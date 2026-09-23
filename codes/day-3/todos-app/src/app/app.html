@@ -1,1 +1,5 @@
+<button type="button" (click)="show.update((current)=>!current)">{{show()?'Hide':'Show'}}</button>
+<br>
+@if(show()){
 <app-todo-list></app-todo-list>
+}

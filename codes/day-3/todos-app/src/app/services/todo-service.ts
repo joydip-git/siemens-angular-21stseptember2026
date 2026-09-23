@@ -14,10 +14,16 @@ import { Observable } from "rxjs";
 
 export interface ServiceManager<T> {
     fetchAll(): Observable<T[]>;
+    fetch(id: number): Observable<T>;
 }
 
 export class TodoService implements ServiceManager<Todo> {
+
     private http = inject(HttpClient)
+
+    fetch(id: number): Observable<Todo> {
+        return this.http.get<Todo>(`${TODO_API_URL}/${id}`)
+    }
 
     fetchAll() {
         // const obs: Observable<Object> = this.http.get(TODO_API_URL)

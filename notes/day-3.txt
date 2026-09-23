@@ -26,5 +26,57 @@ API for response -> Observable
 		observable object is used to store the incoming response fron the backend
 		anyone who wants to extract/receive/consume that data from observable, has to subscribe the observable
 
+effect: Registers an "effect" that will be scheduled & executed whenever the signals that it reads changes.
+
+
+computedSignal =  computed(() => { return ...})
+
+effect( () => { } )
+
+lifecycle:
+----------------------
+created and destroyed
+
+mounting:
+--------------
+field initialization
+constructor executed
+changes event gets fired 
+	if the component has input decorated property, the component receives the first value from the parent component via that property just after constructor execution
+this is the time when "changes" event gets fired
+you can handle this event with a particular method: 	ngOnChanges(changes:SimpleChanges) => void
+	[implement OnChanges interface]
+
+this event gets fired every time nested component receives fresh data via the input decorated property from its parent (including the first time)
+
+init event gets fired
+	immediately after changes event, another event gets fired, "init"
+	you can handle this event with a particular method: ngOnInit() => void
+	[implement OnInit interface]
+	this event gets fired ONLY ONCE in the lifecycle of the component
+
+
+update:
+------------
+changes event gets fired if nested component receives fresh data via the input decorated property from its parent
+
+destroy:
+------------
+an event gets fired just before the component gets destroyed "destroy"
+	you can handle this event with a particular method: ngOnDestroy() => void
+	[implement OnDestroy interface]
+	this event gets fired ONLY ONCE in the lifecycle of the component
+
+effect()
+EffectCleanupRegisterFn:
+A callback passed to the effect function that makes it possible to register cleanup logic.
+
+
+
+
+
+
+
+
 
 

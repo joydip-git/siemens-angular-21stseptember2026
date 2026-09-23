@@ -9,5 +9,5 @@ import { TodoList } from './components/todo-list/todo-list';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('todos-app');
+  protected show = signal(false)
 }
