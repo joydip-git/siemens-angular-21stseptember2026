@@ -1,0 +1,59 @@
+GET http://127.0.0.1:3003/products
+
+###
+GET http://127.0.0.1:3003/products/1
+
+###
+GET http://127.0.0.1:3003/products/100
+
+###
+POST http://127.0.0.1:3003/products
+Content-Type: application/json
+
+{
+    "productId": 6,
+    "productName": "abcd",
+    "productCode": "GMG-0042",
+    "releaseDate": "October 15, 2015",
+    "description": "Standard two-button video game controller",
+    "price": 100,
+    "starRating": 4.5,
+    "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
+}
+
+###
+PUT http://127.0.0.1:3003/products/6
+Content-Type: application/json
+
+{
+    "productId": 6,
+    "productName": "test",
+    "productCode": "GMG-0042",
+    "releaseDate": "October 15, 2015",
+    "description": "Standard two-button video game controller",
+    "price": 150,
+    "starRating": 3,
+    "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
+}
+
+###
+PUT http://127.0.0.1:3003/products/100
+Content-Type: application/json
+
+{
+    "productId": 100,
+    "productName": "test",
+    "productCode": "GMG-0042",
+    "releaseDate": "October 15, 2015",
+    "description": "Standard two-button video game controller",
+    "price": 150,
+    "starRating": 3,
+    "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
+}
+
+
+###
+DELETE http://127.0.0.1:3003/products/6
+
+###
+DELETE http://127.0.0.1:3003/products/100

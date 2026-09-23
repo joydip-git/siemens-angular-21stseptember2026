@@ -1,0 +1,15 @@
+@if(!isRequestOver()){
+<span>Loading...</span>
+}@else if(errorInfo()!==''){
+<span>{{errorInfo()}}</span>
+}@else if(todos().length===0){
+<span>No records</span>
+}@else {
+<h2>Todo List</h2>
+<br>
+<ul>
+    @for (todo of todos(); track $index) {
+    <li>{{todo.title}}</li>
+    }
+</ul>
+}

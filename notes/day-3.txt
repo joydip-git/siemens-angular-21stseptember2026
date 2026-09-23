@@ -1,0 +1,30 @@
+providers:[ProductService]
+equal to ->
+providers:[
+	{
+		provide: ProductService,
+		useClass: ProductService
+	}
+]
+
+
+HTTP requests:
+-------------------
+built-in service class: HttpClient
+provider function: provideHttpClient(): Configures Angular's HttpClient service to be available for injection.
+
+nowadays in Angular HttpClient provider is provided by default at the root. 
+You don't have to call this method, until and unless, you have to "enhance" the HttpClient
+
+HttpClient: 
+	methods -> get(), post(), put(), patch(), delete(), options() etc.
+
+asynchronous -> they send the request but do not block the single thread of JS
+API for response -> Observable
+		this object is returned by each of the HttpClient method whenever you call those methods
+		observable object is an API provided by 3rd party: RxJS 
+		observable object is used to store the incoming response fron the backend
+		anyone who wants to extract/receive/consume that data from observable, has to subscribe the observable
+
+
+
