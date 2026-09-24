@@ -1,4 +1,4 @@
 export type ApiResponse<T> = {
-    mesaage: string,
+    message: string,
     data: T | null
 }

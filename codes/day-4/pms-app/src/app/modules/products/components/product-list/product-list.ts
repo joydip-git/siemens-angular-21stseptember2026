@@ -6,9 +6,10 @@ import { PRODUCT_SERVICE_TOKEN } from '../../../../config/app-constants';
 import { ServiceContract } from '../../models/service-contract';
 import { Subscription } from 'rxjs';
 import { Spinner } from '../../../shared/components/spinner/spinner';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [ProductFilterPipe, UpperCasePipe, CurrencyPipe, Spinner],
+  imports: [ProductFilterPipe, UpperCasePipe, CurrencyPipe, Spinner, RouterLink],
   selector: 'app-product-list',
   styleUrl: './product-list.css',
   templateUrl: './product-list.html',
@@ -36,7 +37,7 @@ export class ProductList {
             this.errorInfo.set('')
           } else {
             this.products.set([])
-            this.errorInfo.set(apiResponse.mesaage)
+            this.errorInfo.set(apiResponse.message)
           }
           this.isRequestOver.set(true)
         },
@@ -52,6 +53,17 @@ export class ProductList {
       registerCleanUp(
         () => fetchSubscription?.unsubscribe()
       )
+    }
+  }
+  deleteProduct(id: number) {
+    if (window.confirm('delete data?')) {
+      //send an HTTP delete request to the backend with the id
+
+      //success
+      window.alert('deleted successfully')
+
+      //re-load
+      this.fetchProducts()
     }
   }
 }

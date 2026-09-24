@@ -82,13 +82,11 @@ you can assign a string url to it or assign an array containing fragments of the
 RouterLink starts building the whole URL from left to right.
 
 
-
+Form Handling
+--------------
 
 Auth
 --------------
 
 Guard
---------------
-
-Form Handling
 --------------

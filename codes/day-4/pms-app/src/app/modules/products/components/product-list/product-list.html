@@ -19,13 +19,13 @@
         @for (p of products()|productFilter:filterText(); track $index) {
         <tr>
             <td>
-                <img [src]="p.imageUrl" alt="NA" class="img-box">
+                <img [src]="p.imageUrl" alt="NA" class="img-box" [routerLink]="['/products/view',p.productId]">
             </td>
             <td>{{p.productName|uppercase}}</td>
             <td>{{p.price|currency:'USD'}}</td>
             <td>{{p.starRating}}</td>
             <td>
-                <button type="button" class="btn btn-danger btn-border">Delete</button>
+                <button type="button" class="btn btn-danger btn-border" (click)="deleteProduct(p.productId)">Delete</button>
             </td>
         </tr>
         }
