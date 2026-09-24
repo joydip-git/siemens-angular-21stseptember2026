@@ -57,3 +57,13 @@ DELETE http://127.0.0.1:3003/products/6
 
 ###
 DELETE http://127.0.0.1:3003/products/100
+
+
+###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username":"joydip@gmail.com",
+    "password":"Joydip@123"
+}

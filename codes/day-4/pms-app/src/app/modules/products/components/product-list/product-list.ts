@@ -43,7 +43,7 @@ export class ProductList {
         },
         error: (err) => {
           this.products.set([])
-          this.errorInfo.set(err.mesaage)
+          this.errorInfo.set(err.message)
           this.isRequestOver.set(true)
         }
 

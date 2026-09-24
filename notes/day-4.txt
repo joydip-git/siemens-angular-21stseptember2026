@@ -82,11 +82,22 @@ you can assign a string url to it or assign an array containing fragments of the
 RouterLink starts building the whole URL from left to right.
 
 
+Auth
+--------------
+interceptor: a function/class which intercepts any outgoing request from/incoming response to angular app and "do something" with that request
+
+
+HttpInterceptorFn: (req:HttpRequest, next: HttpHandlerFn) => HttpHandler
+
+	return next(req)
+
+withInterceptors([IFn1, IFn2,...]) => Adds one or more functional-style HTTP interceptors to the configuration of the HttpClient instance.
+
+provideHttpClient(withInterceptors([TokenInterceptor]))
+
 Form Handling
 --------------
 
-Auth
---------------
 
 Guard
 --------------
