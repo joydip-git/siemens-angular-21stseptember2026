@@ -39,6 +39,30 @@ create a ProductService class in that and implement the interface
 create and register a custom provider (based on InjectionToken) in the app.config.ts file
 consume the same in ProductList component either through constructor or using inject() method (preferred)
 
+
+enhancement-3:
+---------------
+routing:
+	create routes for
+		products:
+			ProductContainer component	
+			when you click on any image in the table, you should be redirected to another component, ViewProduct, which displays the details of the product (pass the id of the selected product via route parameter)
+			when you click on "edit" button on the the ViewProduct component, you will be able to navigate to another component, EditProduct, which can be used to display the product details and then edit the same. upon successful edit, the product data should be updated at the backend as wellas you should be able to navigate back to ProductContainer component
+			Clicking on “Add Product” link on the navbar, will take you to AddProduct component. Clicking on “Add” button will send the product data to the backend to be saved and then user should be directed to “/products” URL after successful add operation.
+			
+		
+		shared:
+			home component
+			redirection url: base url -> home url
+			wildcard route for unregistered route navigation
+
+components:
+	shared -> home, page-not-found, dash-board (not a routed, but nested component)
+
+	products -> add-product, edit-product, view-product
+
+
+
 app name: pms-app
 
 src (folder)
