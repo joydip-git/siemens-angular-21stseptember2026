@@ -1,0 +1,94 @@
+Client side rendering (CSR) and client-side data fetching and client-side routing
+Server-side rendering (SSR) and static site generation (SSG/Prerendering)
+	client-side data fetching
+	server-side data fetching
+
+
+Passing data between two components 
+-----------------------------------------
+a. when they are not nested into each other
+or
+b. they are nested (i.e., in the same component tree) but the its a deep nesting
+
+Routing
+---------------
+client-side routing
+
+
+package: @angular/router
+
+services:
+--------------
+Router, ActivatedRoute, RouterState etc.
+
+types:
+---------------
+Route, Routes, ActivatedRouteSnapshot, RouterStateSnapshot
+route -> Route 
+	path: path fragment
+	component: 
+
+collection -> Routes [Route array]
+
+directives:
+--------------------
+RouterLink, RouterOutlet
+
+app.routes.ts
+-------------------
+export const routes:Routes=[]
+
+register the Routes with root file (app.config.ts)
+const appConfig:ApplcationConfig = {
+	providers:[
+		provideRouter(routes)
+	]
+}
+
+provideRouter -> Sets up providers necessary to enable Router functionality for the application. Allows to configure a set of routes as well as extra features that should be enabled.
+
+Router -> A service that facilitates navigation among views and URL manipulation capabilities. This service is provided in the root scope and configured with provideRouter.
+
+Routes -> Represents a route configuration for the Router service. An array of Route objects, used in Router.config and for nested route configurations in Route.children.
+
+Route -> A configuration object that defines a single route. A set of routes are collected in a Routes array to define a Router configuration. The router attempts to match segments of a given URL against each route, using the configuration options defined in this object.
+
+Supports static, parameterized, redirect, and wildcard routes, as well as custom route data and resolve methods.
+
+Params:
+route parameter and its value
+{ "id":"1"}
+
+RouterOutlet -> Built-in component directive. Acts as a placeholder that Angular dynamically fills based on the current router state.
+
+Each outlet can have a unique name, determined by the optional name attribute. The name cannot be set or changed dynamically. If not set, default value is "primary".
+
+RouterState -> A service that represents the state of the router as a tree of activated routes.
+
+"snapshot" property of RouterState returns RouterStateSnapshot
+RouterStateSnapshot: a type which represents the current state of router
+
+Every node in the route tree is an ActivatedRoute instance that knows about the "consumed" URL segments, the extracted parameters, and the resolved data. Use the ActivatedRoute properties to traverse the tree from any node.
+
+ActivatedRoute -> a service, which is created for every route (only one time) when a route is navigated for the very first time. AR instance knows about the "consumed" URL segments, the extracted parameters, and the resolved data. Use the ActivatedRoute properties to traverse the tree from any node.
+
+"snapshot" property of ActivatedRoute returns ActivatedRouteSnapshot
+ActivatedRouteSnapshot -> a type which represents the current state of ActivatedRoute object. Contains the information about a route associated with a component loaded in an outlet at a particular moment in time. ActivatedRouteSnapshot can also be used to traverse the router state tree.
+
+
+RouterLink -> a built-in attribute directive, which when applied to an element in a template, makes that element a link that initiates navigation to a route. 
+
+you can assign a string url to it or assign an array containing fragments of the url.
+RouterLink starts building the whole URL from left to right.
+
+
+
+
+Auth
+--------------
+
+Guard
+--------------
+
+Form Handling
+--------------

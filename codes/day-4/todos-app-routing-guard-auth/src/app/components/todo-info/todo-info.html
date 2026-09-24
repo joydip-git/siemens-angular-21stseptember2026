@@ -1,0 +1,15 @@
+@if(todo()!==null){
+<div>
+    Id:&nbsp;<span>{{todo()?.id}}</span>
+    <br>
+    Title:&nbsp;<span>{{todo()?.title}}</span>
+    <br>
+    Assigned To:&nbsp;<span>{{todo()?.userId}}</span>
+    <br>
+    Status:&nbsp;<input type="checkbox" [checked]="todo()?.completed">
+    <br>
+    <!-- <button type="button" [routerLink]="['/todos/edit',todo()?.id]">Edit</button> -->
+    <button type="button" (click)="gotoEdit()">Edit</button>
+</div>
+
+}

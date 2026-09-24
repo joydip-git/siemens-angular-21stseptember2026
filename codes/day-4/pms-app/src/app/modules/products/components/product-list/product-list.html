@@ -1,0 +1,34 @@
+@if(!isRequestOver()){
+<app-spinner></app-spinner>
+}@else if (errorInfo()!=='') {
+<span>{{errorInfo()}}</span>
+}@else if(products().length==0){
+<span>No products found...</span>
+}@else{
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody class="table-dark">
+        @for (p of products()|productFilter:filterText(); track $index) {
+        <tr>
+            <td>
+                <img [src]="p.imageUrl" alt="NA" class="img-box">
+            </td>
+            <td>{{p.productName|uppercase}}</td>
+            <td>{{p.price|currency:'USD'}}</td>
+            <td>{{p.starRating}}</td>
+            <td>
+                <button type="button" class="btn btn-danger btn-border">Delete</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+}
