@@ -22,8 +22,8 @@ http://localhost:3000/products/1		DELETE			id		{ "message":"", "data":[{},{},..]
 http://localhost:3000/products/10		DELETE			id		{ "message":"", "data": null }
 
 authentication
-http://127.0.0.1:3003/auth/login		 POST  {usernane:'', password:''}               { "message":"", "data":sting|null}
+http://127.0.0.1:3003/auth/login		POST  	{usernane:'', password:''}      { "message":"", "data":sting|null}
 
 registration
-http://127.0.0.1:3003/auth/register 	POST   {usernane:'', password:''} { "message":"", "data":{user}|null}
+http://127.0.0.1:3003/auth/register 		POST   {usernane:'', password:''} 	{ "message":"", "data":{user}|null}
 

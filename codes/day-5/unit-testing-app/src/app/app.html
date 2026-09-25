@@ -1,0 +1,30 @@
+<h2>
+  {{title}}
+</h2>
+
+@if(todos ().length>0){
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>User Id</th>
+      <th>Title</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody id="todosbody">
+    @for (todo of todos(); track todo.id) {
+    <tr>
+      <td>{{todo.id}}</td>
+      <td>{{todo.userId}}</td>
+      <td>{{todo.title}}</td>
+      <td>
+        <input type="checkbox" [checked]="todo.completed">
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+}@else {
+<span>No records</span>
+}
