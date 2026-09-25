@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "DgCM5ndZABg=",
+  "success": true,
+  "projectFilePath": "E:\\trainings\\siemens-angular-21stseptember2026\\codes\\day-5\\PmsAppWpfHost\\PmsAppWpfHost\\PmsAppWpfHost.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\joydi\\.nuget\\packages\\microsoft.web.webview2\\1.0.4191.47\\microsoft.web.webview2.1.0.4191.47.nupkg.sha512"
+  ],
+  "logs": []
+}
