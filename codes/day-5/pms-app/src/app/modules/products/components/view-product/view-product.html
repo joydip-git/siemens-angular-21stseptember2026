@@ -1,0 +1,11 @@
+@if(!isRequestOver()){
+<app-spinner></app-spinner>
+}@else if(errorInfo()!==''){
+<span>{{errorInfo()}}</span>
+}@else if(!product()){
+<span>No record found</span>
+}@else {
+<span>Details of {{product()?.productName}}</span>
+}
+<br>
+<button type="button" class="btn btn-primary" (click)="goToEdit()">Edit</button>

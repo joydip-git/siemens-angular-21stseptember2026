@@ -1,0 +1,51 @@
+<!-- <form>
+    <div>
+        <label for="txtUserName">Username: &nbsp;</label>
+        <input type="text" id="txtUserName" class="form-control" name="uname" [(ngModel)]="username">
+    </div>
+    <div>
+        <label for="txtPassword">Password:&nbsp;</label>
+        <input type="password" class="form-control" id="txtPassword" name="pwd" [(ngModel)]="password">
+    </div>
+    <div>
+        <input type="button" value="Register" (click)="register()">
+    </div>
+</form> -->
+
+<form ngForm #frm="ngForm" (submit)="register(frm.form)">
+    <div>
+        <label for="txtUserName">Username: &nbsp;</label>
+        <input type="text" id="txtUserName" class="form-control" name="username" #uname="ngModel" ngModel required
+            email>
+    </div>
+    @if(uname.control.invalid && (uname.control.touched || uname.control.dirty)){
+    <div>
+        @if(uname.control.errors?.["required"]){
+        <span>enter username</span>
+        }
+        @if(uname.control.errors?.["email"]){
+        <span>enter username in email format</span>
+        }
+    </div>
+    }
+    <div>
+        <label for="txtPassword">Password:&nbsp;</label>
+        <input type="password" class="form-control" id="txtPassword" name="pasword" #pwd="ngModel" ngModel
+            passwordvalidator>
+    </div>
+    @if(pwd.control.invalid && (pwd.control.touched || pwd.control.dirty)){
+    <div>
+        <!-- @if(pwd.control.errors?.["required"]){
+        <span>enter password</span>
+        } -->
+        @if(pwd.control.errors?.["passwordcheck"]){
+        <span>password length should be between {{pwd.control.errors?.["passwordcheck"].minlength}} and
+            {{pwd.control.errors?.["passwordcheck"].maxlength}}. current length is:
+            {{pwd.control.errors?.["passwordcheck"].length}}</span>
+        }
+    </div>
+    }
+    <div>
+        <input type="submit" value="Register">
+    </div>
+</form>

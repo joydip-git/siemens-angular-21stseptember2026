@@ -1,0 +1,27 @@
+Routing
+Interceptots
+Route Guard
+
+Form Handling:
+-------------
+1. template-driven form data handling:
+	form data handling is controlled by some attribute directives from template
+	package: @angular/forms
+	module: FormsModule
+
+	@Directive({selector:'[ngModel]'})
+	export class NgModel{
+	}
+
+	@NgModule({
+		declarations:[NgModel],
+		exports:[NgModel]
+	})
+	export class FormsModule{
+	}
+	
+2. reactive form data handling
+	form data handling is controlled by some classes from code
+
+3. signal-based form data handling
+	form data handling is controlled by some classes from code using signals

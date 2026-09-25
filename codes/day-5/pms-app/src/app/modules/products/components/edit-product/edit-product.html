@@ -1,0 +1,9 @@
+<p>edit-product works!</p>
+<br>
+@if(productToEdit()){
+<span>Edit: {{productToEdit()?.productName}}</span>
+}@else {
+<span>No product found</span>
+}
+
+<button type="button" (click)="submit()">Edit</button>

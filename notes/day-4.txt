@@ -84,10 +84,10 @@ RouterLink starts building the whole URL from left to right.
 
 Auth
 --------------
-interceptor: a function/class which intercepts any outgoing request from/incoming response to angular app and "do something" with that request
+interceptor: a sepcial type of function which intercepts any outgoing request from/incoming response to angular app and "do something" with that request
 
-
-HttpInterceptorFn: (req:HttpRequest, next: HttpHandlerFn) => HttpHandler
+every interceptor has to be of the following type of function:
+HttpInterceptorFn: (req:HttpRequest<unknown>, next: HttpHandlerFn) => Observable<HttpEvent<unknown>>
 
 	return next(req)
 
@@ -95,9 +95,22 @@ withInterceptors([IFn1, IFn2,...]) => Adds one or more functional-style HTTP int
 
 provideHttpClient(withInterceptors([TokenInterceptor]))
 
-Form Handling
+Route Guard:
 --------------
+guards are special type of functions, whose job is to control and protect the routes in angular app
 
+every route guard has to be one of the following type of functions:
+1. CanActivate (CanActivateFn): whether any end user can "visit" the route or not
 
-Guard
+canActivate property of Route object: An array of CanActivateFn or DI tokens used to look up CanActivate() handlers, in order to determine if the current user is allowed to activate the component. By default, any user can activate.
+
+2. CanActivateChild (CanActivateChildFn): whether any end user can "visit" the child routes of a parent route or not
+3. CanDeactive (CanDeactiveFn): any end user can "leave" the route or not
+4. CanMatch: checks if a route should even match or exist
+
+http://localhost:4200/auth/login?returnUrl=/originally requested url
+
+http://localhost:4200/auth/login?returnUrl=%2Fproducts
+
+Form Handling
 --------------
