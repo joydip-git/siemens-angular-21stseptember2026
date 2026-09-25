@@ -1,13 +1,42 @@
-<form>
+<form [formGroup]="loginForm" (submit)="login()">
     <div>
         <label for="txtUserName">Username: &nbsp;</label>
-        <input type="text" id="txtUserName">
+        <!-- <input type="text" id="txtUserName" [formControl]="username" class="form-control"> -->
+        <input type="text" id="txtUserName" formControlName="username" class="form-control">
     </div>
+    @if(username?.invalid && (username?.touched || username?.dirty)){
+    <div>
+        @if(username?.errors?.["required"]){
+        <span>enter username</span>
+        }
+        @if(username?.errors?.["email"]){
+        <span>enter username in email format</span>
+        }
+    </div>
+    }
     <div>
         <label for="txtPassword">Password:&nbsp;</label>
-        <input type="password" class="form-control" id="txtPassword">
+        <!-- <input type="password" class="form-control" id="txtPassword" [formControl]="password"> -->
+        <input type="password" class="form-control" id="txtPassword" formControlName="password">
     </div>
+
+    @if(password?.invalid && (password?.touched || password?.dirty)){
     <div>
-        <input type="submit" value="Register">
+        @if(password?.errors?.["required"]){
+        <span>enter password</span>
+        }
+        @else if(password?.errors?.["passwordcheck"]){
+        <span>password length should be between {{password?.errors?.["passwordcheck"].minlength}} and
+            {{password?.errors?.["passwordcheck"].maxlength}}. current length is:
+            {{password?.errors?.["passwordcheck"].length}}</span>
+        }
     </div>
+    }
+
+
+    <div style="text-align: center;">
+        <input type="submit" value="LogIn" class="btn btn-primary" [disabled]="loginForm.invalid">
+    </div>
+    <br>
+    <a routerLink="/auth/register">New User? Register</a>
 </form>

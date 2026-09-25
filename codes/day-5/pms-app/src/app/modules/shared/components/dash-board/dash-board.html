@@ -18,6 +18,11 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/products/add">Add product</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/auth/login" (click)="tokenSvc.removeToken()">
+                        {{tokenSvc.isLoggedIn()?'Logout':'Login'}}
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TokenService } from '../../services/token-service';
 
 @Component({
   imports: [RouterLink],
@@ -7,4 +8,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './dash-board.css',
   templateUrl: './dash-board.html',
 })
-export class DashBoard {}
+export class DashBoard {
+  protected tokenSvc = inject(TokenService)
+}

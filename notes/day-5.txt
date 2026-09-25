@@ -22,6 +22,10 @@ Form Handling:
 	
 2. reactive form data handling
 	form data handling is controlled by some classes from code
+	package: @angular/forms
+	module: ReactiveFormsModule
+
+	attribute directives: formControl, formGroup, formControlName, ...
 
 3. signal-based form data handling
 	form data handling is controlled by some classes from code using signals

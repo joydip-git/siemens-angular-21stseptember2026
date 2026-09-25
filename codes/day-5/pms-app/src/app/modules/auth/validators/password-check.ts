@@ -13,6 +13,6 @@ export const passwordcheck: ValidatorFn = (control: AbstractControl<any, any, an
             };
         else
             return null
-    } else
-        return null
+    }
+    return null
 }

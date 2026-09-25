@@ -31,21 +31,21 @@
     <div>
         <label for="txtPassword">Password:&nbsp;</label>
         <input type="password" class="form-control" id="txtPassword" name="pasword" #pwd="ngModel" ngModel
-            passwordvalidator>
+            passwordvalidator required>
     </div>
     @if(pwd.control.invalid && (pwd.control.touched || pwd.control.dirty)){
     <div>
-        <!-- @if(pwd.control.errors?.["required"]){
+        @if(pwd.control.errors?.["required"]){
         <span>enter password</span>
-        } -->
-        @if(pwd.control.errors?.["passwordcheck"]){
+        }
+        @else if(pwd.control.errors?.["passwordcheck"]){
         <span>password length should be between {{pwd.control.errors?.["passwordcheck"].minlength}} and
             {{pwd.control.errors?.["passwordcheck"].maxlength}}. current length is:
             {{pwd.control.errors?.["passwordcheck"].length}}</span>
         }
     </div>
     }
-    <div>
-        <input type="submit" value="Register">
+    <div style="text-align: center;">
+        <input type="submit" class="btn btn-primary" value="Register" [disabled]="frm.invalid">
     </div>
 </form>
